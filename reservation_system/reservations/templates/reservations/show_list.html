@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>List of Shows</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for show in shows %}
+      <tr>
+        <td>{{ show.title }}</td>
+        <td>{{ show.description }}</td>
+        <td>{{ show.date }}</td>
+        <td>{{ show.location }}</td>
+        <td>{{ show.price }}</td>
+        <td>
+          <a href="{% url 'edit_show' show.id %}">Edit</a>
+          <a href="{% url 'delete_show' show.id %}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'create_show' %}">Create New Show</a>
+{% endblock %}
